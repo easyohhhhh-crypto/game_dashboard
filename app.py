@@ -186,7 +186,7 @@ if company_col:
     fig4 = px.pie(
         top_company,
         names="회사",
-        values="게임수"
+        values="영상수"
     )
 
     st.plotly_chart(
