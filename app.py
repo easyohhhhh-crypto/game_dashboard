@@ -8,11 +8,11 @@ import matplotlib.pyplot as plt
 # 페이지 설정
 # -------------------------------------------------
 st.set_page_config(
-    page_title="게임 등급 분류 대시보드",
+    page_title="영상물 등급 분류 대시보드",
     layout="wide"
 )
 
-st.title("🎮 게임 등급 분류 대시보드")
+st.title("영상물 등급 분류 대시보드")
 
 # -------------------------------------------------
 # 데이터 불러오기
@@ -96,7 +96,7 @@ if rating_col:
 # -------------------------------------------------
 if rating_col:
 
-    st.header("📊 게임 등급 분포")
+    st.header("📊 영상물 등급 분포")
 
     rating_count = (
         df[rating_col]
@@ -104,13 +104,13 @@ if rating_col:
         .reset_index()
     )
 
-    rating_count.columns = ["등급", "게임수"]
+    rating_count.columns = ["등급", "영상수"]
 
     fig = px.bar(
         rating_count,
         x="등급",
-        y="게임수",
-        text="게임수"
+        y="영상수",
+        text="영상수"
     )
 
     st.plotly_chart(
@@ -123,7 +123,7 @@ if rating_col:
 # -------------------------------------------------
 if rating_col and year_col:
 
-    st.header("📈 연도별 게임 등급 변화")
+    st.header("📈 연도별 영상 등급 변화")
 
     year_rating = (
         df.groupby([year_col, rating_col])
@@ -148,7 +148,7 @@ if rating_col and year_col:
 # -------------------------------------------------
 if rating_col and genre_col:
 
-    st.header("🔥 장르별 게임 등급 히트맵")
+    st.header("🔥 장르별 영상 등급 히트맵")
 
     heatmap_data = pd.crosstab(
         df[genre_col],
@@ -172,7 +172,7 @@ if rating_col and genre_col:
 # -------------------------------------------------
 if company_col:
 
-    st.header("🏢 회사별 게임 비율 TOP 10")
+    st.header("🏢 회사별 영상 비율 TOP 10")
 
     top_company = (
         df[company_col]
@@ -181,7 +181,7 @@ if company_col:
         .reset_index()
     )
 
-    top_company.columns = ["회사", "게임수"]
+    top_company.columns = ["회사", "영상수"]
 
     fig4 = px.pie(
         top_company,
